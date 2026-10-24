@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@200;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./dist/output.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer ></script>
 </head>
 <body class="bg-ground font-body text-ink">
 
@@ -40,17 +42,17 @@
         <h1 class="font-display text-4xl font-extrabold text-white">Trouver une créature</h1>
         <label class="flex w-full max-w-md flex-col gap-1 text-sm font-bold text-white">
           Rechercher par nom
-          <input id="search" type="search" placeholder="ex. Mossling" class="field font-normal">
+          <input id="search" type="search" placeholder="ex. Mossling" class="text-black field font-normal " >
         </label>
       </div>
       <div id="filters" role="group" aria-label="Filtrer par type" class="flex h-11 flex-nowrap gap-2 overflow-x-auto">
           <button type="button" class="chip bg-ink text-white border-ink lg:shrink-0 hover:bg-brand">Tous</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Feu</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Eau</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Plante</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Électrik</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Glace</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Ténèbres</button>
+          <button type="button" class="chip shrink-0    hover:bg-brand-light">Fire</button>
+          <button type="button" class="chip shrink-0    hover:bg-brand-light">Water</button>
+          <button type="button" class="chip shrink-0    hover:bg-brand-light">Dark</button>
+          <button type="button" class="chip shrink-0    hover:bg-brand-light">Earth</button>
+          <button type="button" class="chip shrink-0    hover:bg-brand-light">Wind</button>
+          <button type="button" class="chip shrink-0    hover:bg-brand-light">Light</button>
       </div>
     </section>
 
@@ -59,110 +61,7 @@
       <!-- ===================== GRILLE DES CRÉATURES ===================== -->
       <section id="grid" aria-label="Créatures" class="grid min-w-60 flex-1 grid-cols-1 mx-auto md:grid-cols-3 lg:grid-cols-3 gap-5">
 
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4    h-full w-full        cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5 hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none  ">
-          <div class="relative flex h-70 items-center justify-center rounded-xl bg-brand-light ">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-             <img src="https://images.ygoprodeck.com/images/cards/73580471.jpg" alt="Black rose dragon" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#001</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">Black Rose Dragon</h3>
-            <span class="rounded-full bg-attr-fire px-3 py-1 text-sm font-bold text-ink">Fire</span>
-          </div>
-          <p class="text-sm text-muted">Base · Total 309</p>
-          <button type="button" class="btn-outline mt-auto hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
-
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4      h-full w-full      cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5 hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none">
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/10000000.jpg" alt="Obelisk the Tormentor" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#002</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">Obelisk the Tormentor</h3>
-            <span class="rounded-full bg-attr-divine px-3 py-1 text-sm font-bold text-ink">Divine</span>
-          </div>
-          <p class="text-sm text-muted">Base · Total 314</p>
-          <button type="button" class="btn-outline mt-auto  hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
-
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4      h-full w-full      cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5 hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none">
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/24140059.jpg" alt="A cat of ill omen" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#003</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">A cat of ill omen</h3>
-            <span class="rounded-full bg-attr-dark px-3 py-1 text-sm font-bold text-ink">Dark</span>
-          </div>
-          <p class="text-sm text-muted">Base · Total 318</p>
-          <button type="button" class="btn-outline mt-auto  hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
-
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4     h-full w-full       cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5 hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none">
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/27553701.jpg" alt="Black rose dragon" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#004</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">Absolute King - Megaplunder</h3>
-            <span class="rounded-full bg-attr-earth px-3 py-1 text-sm font-bold text-ink">Earth</span>
-          </div>
-          <p class="text-sm text-muted">Niveau 1 · Total 405</p>
-          <button type="button" class="btn-outline  mt-auto  hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
-
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4     h-full w-full       cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5 hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none">
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/73079836.jpg" alt="Black rose dragon" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#005</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">Adamancipator Risen -<br> Raptite</h3>
-            <span class="rounded-full bg-attr-wind px-3 py-1 text-sm font-bold text-ink  ">Wind</span>
-          </div>
-          <p class="text-sm text-muted">Niveau 1 · Total 405</p>
-          <button type="button" class="btn-outline mt-auto  hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
-
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4      h-full w-full      cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5  hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none">
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/27132400.jpg" alt="Black rose dragon" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#006</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">Altergeist Malwisp</h3>
-            <span class="rounded-full bg-attr-light px-3 py-1 text-sm font-bold text-ink">Light</span>
-          </div>
-          <p class="text-sm text-muted">Niveau 1 · Total 420</p>
-          <button type="button" class="btn-outline mt-auto  hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
-
-        <!-- Carte écrite à la main : à remplacer par des cartes générées en JS (Partie 2) -->
-        <article class="flex flex-col gap-3 rounded-card bg-white p-3 pb-4     h-full w-full       cursor-pointer transition-[transform,translate,scale,rotate,opacity,box-shadow] duration-300 group-hover:opacity-35 group-hover:scale-95 hover:opacity-100! hover:scale-100 hover:-translate-y-2.5 hover:shadow-[0_16px_36px_rgba(0,0,0,.4)] focus-visible:opacity-100! focus-visible:-translate-y-2.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-thv18-green motion-reduce:transition-none">
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/15464375.jpg" alt="Black rose dragon" class="h-full w-full " >
-            <span class="absolute left-3 top-2 font-mono text-sm text-muted">#007</span>
-          </div>
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-display text-xl font-semibold">Adularia of the June Moon</h3>
-            <span class="rounded-full bg-attr-water px-3 py-1 text-sm font-bold text-ink">Water</span>
-          </div>
-          <p class="text-sm text-muted">Niveau 2 · Total 525</p>
-          <button type="button" class="btn-outline mt-auto  hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
-        </article>
+        
 
       </section>
 
@@ -266,25 +165,36 @@
         <label class="flex flex-col gap-1 text-sm font-bold">Type
           <select name="type" class="field font-normal">
             <option value="">Choisir un type</option>
-            <option>Feu</option><option>Eau</option><option>Plante</option>
-            <option>Électrik</option><option>Glace</option><option>Ténèbres</option>
+            <option>Fire</option><option>Water</option><option>Divine</option>
+            <option>Earth</option><option>Dark</option><option>Wind</option><option>Light</option>
           </select>
           <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
-        <label class="flex flex-col gap-1 text-sm font-bold">Niveau
-          <input name="level" type="text" placeholder="Base, Niveau 1…" class="field font-normal">
+
+
+        <label class="flex flex-col gap-1 text-sm font-bold">Level
+          <select name="type" class="field font-normal">
+            <option value="">Stars number</option>
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6</option><option>7</option>
+            <option>8</option><option>9</option><option>10</option>
+            <option>11</option><option>12</option>
+            
+          </select>
           <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
-        <label class="flex flex-col gap-1 text-sm font-bold">Statistique 1
-          <input name="stat1" type="text" placeholder="0 à 999" class="field font-normal">
+
+
+        <!-- <label class="flex flex-col gap-1 text-sm font-bold">Etoiles
+          <input name="stat1" type="text" placeholder="0 à 12" class="field font-normal">
+          <span class="error-message text-sm font-normal text-invalid"></span> -->
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">ATK
+          <input name="stat2" type="text" placeholder="0 à ∞" class="field font-normal">
           <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
-        <label class="flex flex-col gap-1 text-sm font-bold">Statistique 2
-          <input name="stat2" type="text" placeholder="0 à 999" class="field font-normal">
-          <span class="error-message text-sm font-normal text-invalid"></span>
-        </label>
-        <label class="flex flex-col gap-1 text-sm font-bold">Statistique 3
-          <input name="stat3" type="text" placeholder="0 à 999" class="field font-normal">
+        <label class="flex flex-col gap-1 text-sm font-bold">DEF
+          <input name="stat3" type="text" placeholder="0 à ∞" class="field font-normal">
           <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
         <label class="flex flex-col gap-1 text-sm font-bold">Lien de l'image
@@ -297,7 +207,7 @@
         </label>
         <div class="flex flex-wrap justify-end gap-3 md:col-span-2 lg:col-span-4">
           <button type="reset" class="btn-outline px-6 hover:bg-invalid  hover:border-0">Effacer</button>
-          <button type="submit" class="btn-primary border-2 border-gold hover:border-0 hover:bg-gold-metal">Ajouter la créature</button>
+          <button type="submit" class="btn-primary bg-gold border-1 border-gold hover:border-0 hover:bg-none hover:bg-gold-dark">Ajouter la créature</button>
         </div>
       </form>
     </section>
