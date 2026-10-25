@@ -32,7 +32,7 @@ function showDetail(card){
                   <span class="font-mono">${card.level}</span>
                </div>
                <div class="flex flex-wrap gap-0.5 text-xl leading-none" role="img" aria-label="${card.level} étoiles sur 12">
-                <p class="text-sm text-muted">${"★".repeat(card.level)}</p>
+                <p class="text-lg text-muted">${"★".repeat(card.level)}</p>
               <!-- 2 empty stars -->
                  <span class="text-line/30">${"★".repeat( 12 - card.level)}</span>
               </div>
@@ -46,6 +46,12 @@ function showDetail(card){
           <button type="button" class="bg-gold-metal text-ink font-semibold focus:ring-1 focus:ring-gold-light btn-primary hover:border-2 hover:border-card-xyz hover:bg-none hover:bg-gold-dark">Ajouter à l'équipe</button>
         
   `
+  detail.querySelector('button').addEventListener('click', function(){
+  detail.innerHTML=`
+  <h2 class="font-display text-3xl font-extrabold ">choose a card</h2>
+  `
+})
+
 }
 
 
@@ -59,15 +65,16 @@ cards.forEach(card =>{
     const article = document.createElement("article")
 
     article.className = cardClass
-    article.setAttribute("id", "card")
+    article.setAttribute("data-attribute", `${card.attribute}`)
+    
     article.innerHTML = `
-           <div class="relative flex h-70 items-center justify-center rounded-xl bg-brand-light ">
+           <div class="relative flex h-70 items-center justify-center rounded-xl bg-brand-light " ">
               <img src="${card.image}" alt="${card.name}" class="h-full w-full " >
              <span class="absolute left-3 top-2 font-mono text-sm text-muted">#${String(card.id).padStart(3 ,"0")}</span>
            </div>
            <div class="flex items-center justify-between gap-2">
              <h3 class="font-display text-xl font-semibold">${card.name}</h3>
-             <span class="rounded-full ${card.attrClass} px-3 py-1 text-sm font-bold text-ink">${card.attribute}</span>
+             <span class="rounded-full ${card.attrClass} px-3 py-1 text-sm font-bold text-ink" >${card.attribute}</span>
            </div>
            <p class="text-sm font-semibold">ATK ${card.atk} / DEF ${card.def}</p>
            <button type="button" class="btn-outline mt-auto hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
@@ -80,9 +87,7 @@ cards.forEach(card =>{
     grid.appendChild(article);
 });
 
-detail.querySelector('button').addEventListener('click', function(){
-  detail.innerHTML=""
-})
+
 
 
 // <!-- <svg aria-hidden="true" class="h-14 w-14 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
@@ -116,6 +121,71 @@ detail.querySelector('button').addEventListener('click', function(){
 //           <p class="text-sm text-muted">Base · Total 309</p>
 //           <button type="button" class="btn-outline mt-auto hover:bg-gold-metal hover:border-0">Ajouter à l'équipe</button>
 //         </article>
+
+
+
+
+// ----------------------RECHERCHE----------------------------
+const search = document.getElementById("search")
+const articles = document.querySelectorAll("#grid article")
+const buttonFilters = document.querySelectorAll("#filters button")
+
+let activeAttribute = ""
+
+const activeButton = ["bg-ink", "border-ink" , "text-white" , "hover:bg-brand"]
+const inactiveButton = ["hover:bg-brand-light"]
+
+
+function updatesCard(){
+
+  const text = search.value.trim().toLowerCase()
+
+
+  articles.forEach(article =>{
+
+   const name = article.querySelector('h3').textContent.toLowerCase()
+   const cardAttribute = article.dataset.attribute
+   
+
+   const matchName = name.includes(text)
+   const matchAttribute = activeAttribute === "" || cardAttribute === activeAttribute
+
+   article.style.display = matchName && matchAttribute ? "" : "none";
+
+   })
+}
+
+search.addEventListener("input", updatesCard)
+  
+
+// -------------------------------FILTERS-------------------------------
+
+buttonFilters.forEach(button =>{
+  const selected = button.dataset.attribute
+  
+  button.addEventListener('click', function(){
+     activeAttribute = button.dataset.attribute || "";
+     
+    // -----------show and hide cards-------
+    // articles.forEach(cardArticle =>{
+    //   let 
+    //   const show = !selected || selected ==  cardAttribute
+
+    //   cardArticle.style.display = show ? "" : "none";
+     
+    //  })
+    //  --------------------- change the filter of the button-----------
+    buttonFilters.forEach(b =>{
+      b.classList.remove(...activeButton)
+      b.classList.add(...inactiveButton)
+    })
+
+    button.classList.remove(...inactiveButton)
+    button.classList.add(...activeButton)
+
+     updatesCard();
+  })
+})
 
 
 

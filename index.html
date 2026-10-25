@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <title>Mon Dex</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -46,13 +46,13 @@
         </label>
       </div>
       <div id="filters" role="group" aria-label="Filtrer par type" class="flex h-11 flex-nowrap gap-2 overflow-x-auto">
-          <button type="button" class="chip bg-ink text-white border-ink lg:shrink-0 hover:bg-brand">Tous</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Fire</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Water</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Dark</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Earth</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Wind</button>
-          <button type="button" class="chip shrink-0    hover:bg-brand-light">Light</button>
+          <button type="button" id="tous" class="chip bg-ink text-white border-ink lg:shrink-0 hover:bg-brand" >Tous</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Fire">Fire</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Water">Water</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Dark">Dark</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Earth">Earth</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Wind">Wind</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Light">Light</button>
       </div>
     </section>
 
@@ -68,46 +68,8 @@
       <aside class="flex lg:w-[420px] max-w-[400px] md:mx-auto lg:shrink-0 flex-col gap-6">
 
         <!-- ===================== PANNEAU DE DÉTAIL ===================== -->
-        <section id="detail" aria-label="Détail de la créature" class="flex flex-col gap-4 rounded-card  bg-white border-attr-divine border-8 p-6">
-          <div class="flex items-center justify-between">
-            <span class="font-mono text-sm text-muted">#002 · Détail</span>
-            <button type="button" aria-label="Fermer le détail" class="btn-outline w-11 px-0 hover:bg-invalid">✕</button>
-          </div>
-          <div class="relative flex h-70  items-center justify-center rounded-xl bg-brand-light">
-            <!-- <svg aria-hidden="true" class="h-20 w-20 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-5 3.5-9 8-9s8 4 8 9"></path><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7 7 5 3M17 7l2-4"></path></svg> -->
-            <img src="https://images.ygoprodeck.com/images/cards/10000000.jpg" alt="Obelisk the Tormentor" class="h-full w-full " >
-          </div>
-          <div class="flex items-center justify-between">
-            <h2 class="font-display text-3xl font-extrabold">Obelisk the Tormentor</h2>
-            <span class="rounded-full bg-attr-divine px-3 py-1 text-sm font-bold text-ink">Divine</span>
-          </div>
-          <p class="text-gray-700">Une créature calme qui dort sous les feuilles mortes et se réveille quand il pleut.</p>
-          <div class="flex flex-col gap-2 text-sm">
-
-
-            <!-- <div class="grid grid-cols-[80px_1fr_40px] items-center gap-2"><span class="font-bold">Etoiles</span><span class="h-3 rounded-full bg-brand-light"><span class="block h-3 w-[30%] rounded-full bg-brand"></span></span><span class="text-right font-mono">45</span></div> -->
-            <div class="flex flex-col gap-1 text-sm">
-               <div class="flex items-center justify-between">
-                  <span class="font-bold">Étoiles</span>
-                  <span class="font-mono">10</span>
-               </div>
-               <div class="flex flex-wrap gap-0.5 text-xl leading-none" role="img" aria-label="10 étoiles sur 12">
-                <!-- 10 filled stars -->
-                 <span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span>
-                 <span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span>
-                 <span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span>
-                <span class="text-gold">★</span>
-              <!-- 2 empty stars -->
-                 <span class="text-line/30">★</span><span class="text-line/30">★</span>
-              </div>
-          </div>
-            
-            
-            
-            <div class="grid grid-cols-[80px_1fr_40px] items-center gap-2"><span class="font-bold">ATK</span><span class="h-3 rounded-full bg-brand-light"><span class="block h-3 w-[33%] rounded-full bg-brand"></span></span><span class="text-right font-mono">49</span></div>
-            <div class="grid grid-cols-[80px_1fr_40px] items-center gap-2"><span class="font-bold">DEF</span><span class="h-3 rounded-full bg-brand-light"><span class="block h-3 w-[43%] rounded-full bg-brand"></span></span><span class="text-right font-mono">65</span></div>
-          </div>
-          <button type="button" class="bg-gold-metal text-ink font-semibold focus:ring-1 focus:ring-gold-light btn-primary hover:border-2 hover:border-card-xyz hover:bg-none hover:bg-gold-dark">Ajouter à l'équipe</button>
+        <section id="detail" aria-label="Détail de la créature" class="flex flex-col gap-4 rounded-card  bg-white border-attr-divine border-8 p-6 ">
+          <h2 class="font-display text-3xl font-extrabold text-center">choose a card</h2>
         </section>
 
         <!-- ===================== MON ÉQUIPE (INCOMPLÈTE) ===================== -->
@@ -218,8 +180,7 @@
     Images : [source des images de votre univers]. Projet de fans réalisé dans le cadre d'une formation.
   </footer>
 
-  <!-- data.js (à créer) doit être chargé AVANT script.js -->
-  <script src="./data.js"></script>
-  <script src="./script.js"></script>
+
+
 </body>
 </html>
