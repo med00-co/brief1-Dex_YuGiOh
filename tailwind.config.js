@@ -82,6 +82,13 @@ module.exports = {
         // ---- NEW: form validation ----
         valid: "#22C55E",
         invalid: "#EF4444",
+
+        // button disabled 
+        disabled: {
+          bg: "#d6d3d1",      // خلفية رمادية فاتحة
+          text: "#78716c",    // نص رمادي
+          border: "#a8a29e"   // حدود رمادية
+        }
       },
       backgroundImage: {
         // metallic gold, for titles, borders and buttons

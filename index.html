@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mon Dex</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   <script src="data.js" defer></script>
   <script src="script.js" defer ></script>
 </head>
-<body class="bg-ground font-body text-ink">
+<body class="bg-[linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('../image/bg4.jpg')] bg-cover bg-center bg-fixed font-body text-ink">
 
   <!-- ===================== EN-TÊTE ===================== -->
   <header class="bg-gold-metal font-bold text-black-500">
@@ -23,18 +23,18 @@
         </div>
         <div>
           <p class="font-display  font-bold text-2xl font-extrabold leading-none">Mon Dex</p>
-          <p class="text-sm text-white">[Yu-Gi-Oh!] · <span id="creature-count">6</span> créatures</p>
+          <p class="text-sm text-white">[Yu-Gi-Oh!] · <span id="creature-count">6</span> cards</p>
         </div>
       </div>
       <nav aria-label="Navigation principale" class="flex flex-wrap gap-2">
-        <a href="#grid" class="rounded-full bg-white/10 px-4 py-2">Créatures</a>
+        <a href="#grid" class="rounded-full bg-white/10 px-4 py-2">Cards</a>
         <a href="#team" class="rounded-full bg-white/10 px-4 py-2">Mon équipe · <span id="team-count">0</span>/6</a>
         <a href="#create" class="rounded-full bg-white px-4 py-2 font-bold text-ink">+ Nouvelle créature</a>
       </nav>
     </div>
   </header>
 
-  <main class="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-8 bg-ground">
+  <main class="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-8 ">
 
     <!-- ===================== RECHERCHE ET FILTRES ===================== -->
     <section aria-label="Recherche et filtres" class="flex flex-col gap-4">
@@ -53,13 +53,14 @@
           <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Earth">Earth</button>
           <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Wind">Wind</button>
           <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Light">Light</button>
+          <button type="button" class="chip shrink-0      hover:bg-brand-light"    data-attribute ="Divine">Divine</button>
       </div>
     </section>
 
     <div class="flex flex-col lg:flex-row gap-8 items-start">
 
       <!-- ===================== GRILLE DES CRÉATURES ===================== -->
-      <section id="grid" aria-label="Créatures" class="grid min-w-60 flex-1 grid-cols-1 mx-auto md:grid-cols-3 lg:grid-cols-3 gap-5">
+      <section id="grid" aria-label="Créatures" class="grid min-w-60 max-h-[1390px] overflow-y-auto flex-1 grid-cols-1 mx-auto md:grid-cols-3 lg:grid-cols-3 gap-5">
 
         
 
@@ -68,40 +69,46 @@
       <aside class="flex lg:w-[420px] max-w-[400px] md:mx-auto lg:shrink-0 flex-col gap-6">
 
         <!-- ===================== PANNEAU DE DÉTAIL ===================== -->
-        <section id="detail" aria-label="Détail de la créature" class="flex flex-col gap-4 rounded-card  bg-white border-attr-divine border-8 p-6 ">
+        <section id="detail" aria-label="Détail de la créature" class="flex flex-col gap-4 rounded-card mx-auto  bg-white   shadow-[0_0_80px_8px] shadow-attr-divine/60   p-6 ">
           <h2 class="font-display text-3xl font-extrabold text-center">choose a card</h2>
         </section>
 
         <!-- ===================== MON ÉQUIPE (INCOMPLÈTE) ===================== -->
         <section id="team" aria-label="Mon équipe" class="rounded-card bg-white p-6  ">
-          <h2 class="font-display text-2xl font-extrabold mb-4">Mon équipe</h2>
+          <p id="team-message" class="text-sm text-invalid min-h-5"></p>
+         <div class="flex flex-wrap justify-between mx-auto mb-4">
+           <h2 class="font-display text-2xl font-extrabold  ">Mon équipe</h2>
+           <p class=" bg-brand-light rounded-lg px-4 py-2 font-bold"><span id="team-count">0</span> /6</p>
+         </div>
+          
+          
           <!-- TODO (Partie 1) : terminez cette section en suivant la maquette :
                compteur x/6, 6 emplacements (vides ou remplis), message de règles. -->
-               <div class="grid min-w-60 flex-1 grid-cols-1 mx-auto md:grid-cols-3 lg:grid-cols-3 gap-5">
+               <div class="grid  flex-1 items-center grid-cols-1 mx-auto md:grid-cols-3 lg:grid-cols-3 gap-5" id="team-slots" >
                 
-                  <button type="button"  class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
+                  <a href="#grid" class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
                      <p class="text-gold-dark text-3xl font-extralight ">+</p>
-                  </button>
+                  </a>
 
-                  <button type="button"  class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
+                  <a  href="#grid" class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
                      <p class="text-gold-dark text-3xl font-extralight ">+</p>
-                  </button>
+                  </a>
 
-                  <button type="button"  class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
+                  <a  href="#grid" class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
                      <p class="text-gold-dark text-3xl font-extralight ">+</p>
-                  </button>
+                  </a>
 
-                  <button type="button"  class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
+                  <a  href="#grid" class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
                      <p class="text-gold-dark text-3xl font-extralight ">+</p>
-                  </button>
+                  </a>
 
-                  <button type="button"  class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
+                  <a  href="#grid" class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
                      <p class="text-gold-dark text-3xl font-extralight ">+</p>
-                  </button>
+                  </a>
 
-                  <button type="button"  class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
+                  <a  href="#grid" class="border px-8 py-6 rounded-card bg-brand-cardVide   flex justify-center items-center hover:border-2 hover:border-gold ">
                      <p class="text-gold-dark text-3xl font-extralight ">+</p>
-                  </button>
+                  </a>
 
                </div>
         </section>
@@ -118,15 +125,15 @@
       <form id="creature-form" novalidate class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
         <label class="flex flex-col gap-1 text-sm font-bold">Numéro
           <input name="id" type="text" placeholder="#010" class="field font-normal">
-          <span class="error-message text-sm font-normal text-muted"></span>
+          <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
         <label class="flex flex-col gap-1 text-sm font-bold">Nom
           <input name="name" type="text" placeholder="Nom de la créature" class="field font-normal">
-          <span class="error-message text-sm font-normal text-muted"></span>
+          <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
-        <label class="flex flex-col gap-1 text-sm font-bold">Type
-          <select name="type" class="field font-normal">
-            <option value="">Choisir un type</option>
+        <label class="flex flex-col gap-1 text-sm font-bold">Attribut
+          <select name="attribute" class="field font-normal">
+            <option value="">Choisir un attibut</option>
             <option>Fire</option><option>Water</option><option>Divine</option>
             <option>Earth</option><option>Dark</option><option>Wind</option><option>Light</option>
           </select>
@@ -135,7 +142,7 @@
 
 
         <label class="flex flex-col gap-1 text-sm font-bold">Level
-          <select name="type" class="field font-normal">
+          <select name="level" class="field font-normal">
             <option value="">Stars number</option>
             <option>1</option><option>2</option><option>3</option>
             <option>4</option><option>5</option><option>6</option><option>7</option>
@@ -147,16 +154,13 @@
         </label>
 
 
-        <!-- <label class="flex flex-col gap-1 text-sm font-bold">Etoiles
-          <input name="stat1" type="text" placeholder="0 à 12" class="field font-normal">
-          <span class="error-message text-sm font-normal text-invalid"></span> -->
-        </label>
+        
         <label class="flex flex-col gap-1 text-sm font-bold">ATK
-          <input name="stat2" type="text" placeholder="0 à ∞" class="field font-normal">
+          <input name="atk" type="text" placeholder="0 à ∞" class="field font-normal">
           <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
         <label class="flex flex-col gap-1 text-sm font-bold">DEF
-          <input name="stat3" type="text" placeholder="0 à ∞" class="field font-normal">
+          <input name="def" type="text" placeholder="0 à ∞" class="field font-normal">
           <span class="error-message text-sm font-normal text-invalid"></span>
         </label>
         <label class="flex flex-col gap-1 text-sm font-bold">Lien de l'image
