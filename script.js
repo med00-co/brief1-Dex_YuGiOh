@@ -484,12 +484,24 @@ formNewCard.addEventListener('submit', function(event){
  formNewCard.reset()
  updatesCard()
  updateButtons()
+ showFormMessage("Créature ajoutée avec succès !")
 })
 
 formNewCard.addEventListener('reset', () => {
   document.querySelectorAll('.error-message').forEach(s => s.textContent = "")
 })
 
+
+// -----------------------------Function show message add successfuly ---------------
+function showFormMessage(text) {
+  const msg = document.getElementById("form-message")
+  if (msg) {
+    msg.textContent = text
+    setTimeout(() => {
+      msg.textContent = ""
+    }, 3000) 
+  }
+}
 
 
 // -------------------------------------------------------------
